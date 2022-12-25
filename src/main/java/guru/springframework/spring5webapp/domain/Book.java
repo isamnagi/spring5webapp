@@ -19,6 +19,11 @@ public class Book {
     inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "publisher_book", joinColumns = @JoinColumn(name = "book_id"),
+    inverseJoinColumns = @JoinColumn(name = "publisher_id"))
+    private Set<Publisher> publishers = new HashSet<>();
+
     public Book() {
     }
 
@@ -27,7 +32,7 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
